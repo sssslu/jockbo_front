@@ -16,7 +16,7 @@ const ShowMoreText = styled.span`
 `;
 
 // 미리 볼 글자 길이
-const TEXT_LIMIT = 150;
+const TEXT_LIMIT = 300;
 
 export default function DetailInfo({ gyeBoId }: Props) {
   const [detailIsLoading, setDetailIsLoading] = useState(false);
