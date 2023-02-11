@@ -36,7 +36,7 @@ export const jockBoDetailFetchApi = async (id: number) => {
 
 export const jockBo5saeFetchApi = async (id: number) => {
   const response = await axios({
-    url: `${baseUrl}/5Sae/${id}`,
+    url: `${baseUrl}/4Sae/${id}`,
     method: 'GET',
   });
   return response.data;

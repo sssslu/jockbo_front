@@ -14,7 +14,7 @@ const frontUrl = import.meta.env.VITE_FRONT_URL;
 
 export default function SearchPage() {
   const [searchItems, setSearchItems] = useState([]);
-  const [gyeBoId, setGyeBoId] = useState(101);
+  const [gyeBoId, setGyeBoId] = useState(100001);
   const [gyeBoTree, setGyeBoTree] = useState<JockBoTreeItemInfo[]>([]);
   const query = useLocation().search;
 
