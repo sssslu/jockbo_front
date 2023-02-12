@@ -20,7 +20,7 @@ export default function TotalPage() {
   return (
     <Stack>
       {isLoading ? (
-        <Loading />
+        <Loading variant={'loop'} />
       ) : (
         <SearchList searchItems={items} setGyeBoId={setGyeBoId} />
       )}

@@ -48,7 +48,7 @@ export default function DetailInfo({ gyeBoId }: Props) {
         {detailInfo?.myName}({detailInfo?.myNamechi}) - {detailInfo?.mySae}世
       </h3>
       {detailIsLoading ? (
-        <Loading />
+        <Loading variant="loop" />
       ) : (
         <>
           <h4>족보등재내용</h4>

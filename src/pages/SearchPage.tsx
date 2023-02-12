@@ -9,6 +9,8 @@ import SearchForm from '../components/SearchForm';
 import SearchList from '../components/SearchList';
 import { JockBoTreeItemInfo } from '../store/types';
 import palette from '../utils/palette';
+import { useRecoilState } from 'recoil';
+import { searchState } from '../store/atoms';
 
 const frontUrl = import.meta.env.VITE_FRONT_URL;
 
@@ -16,6 +18,8 @@ export default function SearchPage() {
   const [searchItems, setSearchItems] = useState([]);
   const [gyeBoId, setGyeBoId] = useState(100001);
   const [gyeBoTree, setGyeBoTree] = useState<JockBoTreeItemInfo[]>([]);
+  const [searchIsLoading, setSearchIsLoading] =
+    useRecoilState<boolean>(searchState);
   const query = useLocation().search;
 
   // 계보 보는 api가 만들어져야 함
@@ -28,9 +32,11 @@ export default function SearchPage() {
 
   useEffect(() => {
     if (query) {
+      setSearchIsLoading(true); // 검색 시작
       jockBoSearchFetchApi(query).then((res) => {
         setSearchItems(res);
         console.log('검색', res);
+        setSearchIsLoading(false); // 검색 끝
       });
     }
   }, [query]);

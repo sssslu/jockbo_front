@@ -1,17 +1,22 @@
 import { FadeLoader } from 'react-spinners';
+import styled from 'styled-components';
 import palette from '../utils/palette';
+import searchLoadingSpinner from '../assets/searchLoadingSpinner.gif';
 
-export default function Loading() {
+interface Props {
+  variant: 'loop' | 'search'; // 종류
+}
+const SpinnerWrapper = styled.div`
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)'
+`;
+
+export default function Loading({ variant }: Props) {
   return (
-    <>
-      <div
-        style={{
-          position: 'fixed',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-        }}
-      >
+    <SpinnerWrapper>
+      {variant === 'loop' && (
         <FadeLoader
           color={palette.darkBrown}
           height={15}
@@ -19,7 +24,8 @@ export default function Loading() {
           radius={2}
           margin={2}
         />
-      </div>
-    </>
+      )}
+      {variant === 'search' && <img src={searchLoadingSpinner} alt="검색중" />}
+    </SpinnerWrapper>
   );
 }
