@@ -1,6 +1,7 @@
 import { Stack } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { jockBoListFetchApi } from '../api';
+import { jockBoListFetchApiLimited } from '../api';
 import Loading from '../components/Loading';
 import SearchList from '../components/SearchList';
 
@@ -11,7 +12,7 @@ export default function TotalPage() {
 
   useEffect(() => {
     setIsLoading(true);
-    jockBoListFetchApi().then((res) => {
+    jockBoListFetchApiLimited().then((res) => {
       setItems(res);
       setIsLoading(false);
     });

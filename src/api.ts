@@ -18,6 +18,14 @@ export const jockBoListFetchApi = async () => {
   return response.data;
 };
 
+export const jockBoListFetchApiLimited = async () => {
+  const response = await axios({
+    url: `${baseUrl}/listlimited`,
+    method: 'GET',
+  });
+  return response.data;
+};
+
 export const jockBoSearchFetchApi = async (query: string) => {
   const response = await axios({
     url: `${baseUrl}/search${query}`,
