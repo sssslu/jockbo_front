@@ -31,8 +31,7 @@ export default function JockBoPage() {
     <>
       <div>
         {userInfo?.myName}({userInfo?.myNamechi})님은 시조로부터{' '}
-        {userInfo?.mySae}세입니다. 10代가계도는 본인을 기준으로 위로 5代, 아래로
-        5代를 보여주는 가계도입니다.
+        {userInfo?.mySae}세입니다. 8촌 가계도는 본인을 기준으로 최대 8촌까지 보여주는 가계도입니다.
       </div>
       {jockBoTree.length > 0 && userId && (
         <JockBoList

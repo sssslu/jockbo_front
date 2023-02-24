@@ -52,7 +52,7 @@ export const jockBo5saeFetchApi = async (id: number) => {
 
 export const jockBo10saeFetchApi = async (id: number) => {
   const response = await axios({
-    url: `${baseUrl}/10sae/${id}`,
+    url: `${baseUrl}/8chon/${id}`,
     method: 'GET',
   });
   return response.data;

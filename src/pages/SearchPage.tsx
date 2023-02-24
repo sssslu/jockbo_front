@@ -74,7 +74,7 @@ export default function SearchPage() {
                     ':hover': { bgcolor: 'black' },
                   }}
                 >
-                  10代
+                  8寸
                 </Button>
               </ButtonGroup>
             </div>
