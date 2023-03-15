@@ -5,7 +5,7 @@ import SearchPage from '../pages/SearchPage';
 import TotalPage from '../pages/TotalPage';
 import AboutPage from '../pages/AboutPage';
 import ApplyPage from '../pages/ApplyPage';
-import JockBoPage from '../pages/JockBoPage';
+import JockBo8Page from '../pages/JockBo8Page';
 
 export const router = createBrowserRouter([
   {
@@ -32,8 +32,8 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: '/jockBo/:userId/:kind',
-    element: <JockBoPage />,
+    path: '/jockBo/8dae',
+    element: <JockBo8Page />,
     errorElement: <ErrorPage />,
   },
 ]);

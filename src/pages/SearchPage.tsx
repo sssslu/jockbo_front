@@ -1,23 +1,25 @@
-import { Button, ButtonGroup, Stack } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { jockBo5saeFetchApi, jockBoSearchFetchApi } from '../api';
 import CustomContainer from '../components/CustomContainer';
 import DetailInfo from '../components/DetailInfo';
-import JockBoList from '../components/JockBoList';
+import JockBoTree from '../components/JockBoTree';
 import SearchForm from '../components/SearchForm';
 import SearchList from '../components/SearchList';
 import { JockBoTreeItemInfo } from '../store/types';
 import palette from '../utils/palette';
-
-const frontUrl = import.meta.env.VITE_FRONT_URL;
+import { useRecoilState } from 'recoil';
+import { searchLoadingState, gyeBoIdState } from '../store/atoms';
 
 export default function SearchPage() {
   const [searchItems, setSearchItems] = useState([]);
-  const [gyeBoId, setGyeBoId] = useState(100001);
   const [gyeBoTree, setGyeBoTree] = useState<JockBoTreeItemInfo[]>([]);
   const query = useLocation().search;
-
+  const [searchIsLoading, setSearchIsLoading] =
+    useRecoilState<boolean>(searchLoadingState);
+  const [gyeBoId, setGyeBoId] = useRecoilState<number>(gyeBoIdState);
   // 계보 보는 api가 만들어져야 함
   useEffect(() => {
     jockBo5saeFetchApi(gyeBoId).then((res) => {
@@ -28,16 +30,14 @@ export default function SearchPage() {
 
   useEffect(() => {
     if (query) {
+      setSearchIsLoading(true); // 검색 시작
       jockBoSearchFetchApi(query).then((res) => {
         setSearchItems(res);
         console.log('검색', res);
+        setSearchIsLoading(false); // 검색 끝
       });
     }
   }, [query]);
-
-  const tenSaeOpenHandler = () => {
-    window.open(`${frontUrl}/jockBo/${gyeBoId}/10dae`, '_black');
-  };
 
   return (
     <Stack>
@@ -53,35 +53,22 @@ export default function SearchPage() {
             }}
           >
             <h3>계보 보기</h3>
-            <div>
-              <ButtonGroup
+            <Link to={'/jockBo/8dae/'}>
+              <Button
                 variant="contained"
-                aria-label="outlined primary button group"
                 size="small"
+                sx={{
+                  background: palette.darkBrown,
+                  ':hover': { bgcolor: 'black' },
+                }}
               >
-                <Button
-                  sx={{
-                    background: palette.darkBrown,
-                    ':hover': { bgcolor: 'black' },
-                  }}
-                >
-                  직계
-                </Button>
-                <Button
-                  onClick={tenSaeOpenHandler}
-                  sx={{
-                    background: palette.darkBrown,
-                    ':hover': { bgcolor: 'black' },
-                  }}
-                >
-                  8寸
-                </Button>
-              </ButtonGroup>
-            </div>
+                8寸
+              </Button>
+            </Link>
           </div>
           <Stack width={700} overflow={'scroll'} position={'relative'}>
             {gyeBoTree.length > 0 && (
-              <JockBoList
+              <JockBoTree
                 jockBo={gyeBoTree}
                 myId={gyeBoId}
                 setGyeBoId={setGyeBoId}

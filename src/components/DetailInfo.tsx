@@ -4,6 +4,8 @@ import { jockBoDetailFetchApi } from '../api';
 import { UserInfo } from '../store/types';
 import Loading from './Loading';
 import palette from '../utils/palette';
+import { Button, Modal } from '@mui/material';
+import DetailChangeForm from './DetailChangeForm';
 
 interface Props {
   gyeBoId: number;
@@ -22,11 +24,15 @@ export default function DetailInfo({ gyeBoId }: Props) {
   const [detailIsLoading, setDetailIsLoading] = useState(false);
   const [detailInfo, setDetailInfo] = useState<UserInfo>();
   const [isShowMore, setIsShowMore] = useState<boolean>(false); // 더보기 열고 닫는 스위치
+  // 변경할 모달 오픈
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   // 족보 등재내용 미리보기
   const previewInfo = useMemo(() => {
     // 족보 등재내용이 없는 경우
-    if (!detailInfo) {
+    if (!detailInfo || !detailInfo.ect) {
       return '';
     }
 
@@ -53,6 +59,7 @@ export default function DetailInfo({ gyeBoId }: Props) {
         <>
           <h4>족보등재내용</h4>
           {detailInfo &&
+            detailInfo.ect &&
             (detailInfo.ect.length <= TEXT_LIMIT ? (
               <span>{detailInfo.ect}</span>
             ) : (
@@ -67,7 +74,19 @@ export default function DetailInfo({ gyeBoId }: Props) {
                 </ShowMoreText>
               </>
             ))}
+          {detailInfo && detailInfo.ect && (
+            <Button onClick={handleOpen}>수정</Button>
+          )}
         </>
+      )}
+      {detailInfo && detailInfo.ect && (
+        <Modal open={open} onClose={handleClose}>
+          <DetailChangeForm
+            detailInfo={detailInfo}
+            setDetailInfo={setDetailInfo}
+            handleClose={handleClose}
+          />
+        </Modal>
       )}
     </div>
   );

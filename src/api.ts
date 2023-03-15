@@ -50,10 +50,19 @@ export const jockBo5saeFetchApi = async (id: number) => {
   return response.data;
 };
 
-export const jockBo10saeFetchApi = async (id: number) => {
+export const jockBo8saeFetchApi = async (id: number) => {
   const response = await axios({
     url: `${baseUrl}/8chon/${id}`,
     method: 'GET',
+  });
+  return response.data;
+};
+
+export const changeDetailApi = async (id: number, changeData: string) => {
+  const response = await axios({
+    url: `${baseUrl}/update/${id}`,
+    method: 'PATCH',
+    data: { ect: changeData },
   });
   return response.data;
 };
