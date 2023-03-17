@@ -2,7 +2,7 @@ import { Box, Button, TextField } from '@mui/material';
 import { ChangeEvent, useState } from 'react';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { searchDataInfo } from '../store/types';
+import { SearchDataInfo } from '../store/types';
 import palette from '../utils/palette';
 import CustomContainer from './CustomContainer';
 
@@ -16,11 +16,11 @@ const TextFieldsWrapper = styled(Box)`
 
 export default function SearchForm() {
   const navigate = useNavigate();
-  const [searchData, setSearchData] = useState<searchDataInfo>({});
+  const [searchData, setSearchData] = useState<SearchDataInfo>({});
 
   const onChangeText = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    textType: keyof searchDataInfo,
+    textType: keyof SearchDataInfo,
   ) => {
     if (event.target.value === '' && textType in searchData) {
       const { [textType]: currentType, ...otherTestTypes } = searchData;

@@ -16,7 +16,7 @@ export interface JockBoTreeItemInfo extends JockBoItemSummaryInfo {
   children?: JockBoTreeItemInfo[];
 }
 
-export type searchDataInfo = {
+export type SearchDataInfo = {
   myName?: string;
   mySae?: string;
   fatherName?: string;
@@ -28,4 +28,10 @@ export interface UserInfo extends JockBoItemSummaryInfo {
   ancUID: number | null;
   ect: string;
   moddate: string;
+}
+
+// ect가 담긴 토탈 족보 트리
+export interface TotalJockBoTreeItemInfo extends JockBoTreeItemInfo {
+  ect: string;
+  children?: TotalJockBoTreeItemInfo[];
 }

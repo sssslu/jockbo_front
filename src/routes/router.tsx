@@ -6,6 +6,7 @@ import TotalPage from '../pages/TotalPage';
 import AboutPage from '../pages/AboutPage';
 import ApplyPage from '../pages/ApplyPage';
 import JockBo8Page from '../pages/JockBo8Page';
+import JockBoEBookPage from '../pages/JockBoEBookPage';
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/total',
-        element: <TotalPage />,
+        element: <JockBoEBookPage />,
       },
       {
         path: '/about',
