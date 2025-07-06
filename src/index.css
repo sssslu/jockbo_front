@@ -16,13 +16,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  white-space: pre-wrap;
 }
 
 
 body {
+  
   margin: 3rem;
   display: flex;
   /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
+  white-space: pre-wrap;
 }

@@ -52,7 +52,7 @@ export default function SearchPage() {
               alignItems: 'center',
             }}
           >
-            <h3>계보 보기</h3>
+            <h3>직계 계보</h3>
             <Link to={'/jockBo/8dae/'}>
               <Button
                 variant="contained"
@@ -62,7 +62,7 @@ export default function SearchPage() {
                   ':hover': { bgcolor: 'black' },
                 }}
               >
-                8寸
+                8寸 계보
               </Button>
             </Link>
           </div>

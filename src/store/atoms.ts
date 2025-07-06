@@ -12,5 +12,5 @@ export const loopLoadingState = atom<boolean>({
 
 export const gyeBoIdState = atom<number>({
   key: 'userState',
-  default: 100001,
+  default: 10001,
 });

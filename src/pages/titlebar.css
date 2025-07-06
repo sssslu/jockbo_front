@@ -1,0 +1,10 @@
+/* titlebar.css */
+
+.titlebarcontainer {
+    position: absolute;
+    width: 1px; /* Set the desired width */
+    height: 1px; /* Set the desired height */
+    overflow: hidden;/* Enable scrolling */
+    background-color: blue
+    
+  }

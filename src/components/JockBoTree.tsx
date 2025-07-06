@@ -53,6 +53,10 @@ export default function JockBoTree({ jockBo, myId, setGyeBoId }: Props) {
   const [isLoading, setIsLoading] = useRecoilState<boolean>(loopLoadingState);
 
   const userChangeClickHandler = (id: number) => {
+    // 본인을 눌렀을 때 아무 일도 일어나지 않도록 설정
+    if (id === myId) {
+      return;
+    }
     setIsLoading(true);
     setGyeBoId(id);
   };

@@ -2,9 +2,6 @@ import { createBrowserRouter } from 'react-router-dom';
 import Root from './Root';
 import ErrorPage from '../pages/ErrorPage';
 import SearchPage from '../pages/SearchPage';
-import TotalPage from '../pages/TotalPage';
-import AboutPage from '../pages/AboutPage';
-import ApplyPage from '../pages/ApplyPage';
 import JockBo8Page from '../pages/JockBo8Page';
 import JockBoEBookPage from '../pages/JockBoEBookPage';
 
@@ -19,16 +16,8 @@ export const router = createBrowserRouter([
         element: <SearchPage />,
       },
       {
-        path: '/total',
+        path: '/eBook/:targetPage/:targetId',
         element: <JockBoEBookPage />,
-      },
-      {
-        path: '/about',
-        element: <AboutPage />,
-      },
-      {
-        path: '/apply',
-        element: <ApplyPage />,
       },
     ],
   },

@@ -1,0 +1,29 @@
+/* ScrollbarContainer.css */
+
+.scrollbar-container {
+    position: relative;
+    width: 1245px; /* Set the desired width */
+    height: 1000px; /* Set the desired height */
+    overflow: scroll;/* Enable scrolling */
+    padding-left: 60px;
+    padding-right: 30px;
+    
+    
+  }
+  
+  .scrollbar-container::-webkit-scrollbar {
+    width: 16px; /* Set the width of the scrollbar */
+  }
+  
+  .scrollbar-container::-webkit-scrollbar-thumb {
+    background-color: #ce3f3f; /* Set the color of the scrollbar thumb */
+    border-radius: 4px; /* Set the border radius of the scrollbar thumb */
+  }
+  
+  .scrollbar-container::-webkit-scrollbar-thumb:hover {
+    background-color: #eb8939; /* Set the color of the scrollbar thumb on hover */
+  }
+  
+  .scrollbar-container::-webkit-scrollbar-track {
+    background-color: #f1efefcc; /* Set the color of the scrollbar track */
+  }

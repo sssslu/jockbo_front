@@ -32,7 +32,7 @@ export default function NavBar() {
         홈페이지
       </NavLinkWrapper>
       <NavLinkWrapper to="/">족보 검색</NavLinkWrapper>
-      <NavLinkWrapper to="/total">전체 계보</NavLinkWrapper>
+      <NavLinkWrapper to="/eBook/1/0">족보 보기</NavLinkWrapper>
       {/* <NavLinkWrapper to="/about">열람 방법</NavLinkWrapper> */}
       {/* <NavLinkWrapper to="/apply">인터넷 족보 등재 신청</NavLinkWrapper> */}
       {/* <NavLinkWrapper as="a" href={`${baseUrl}/admin`}>

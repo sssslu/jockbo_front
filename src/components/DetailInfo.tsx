@@ -6,6 +6,7 @@ import Loading from './Loading';
 import palette from '../utils/palette';
 import { Button, Modal } from '@mui/material';
 import DetailChangeForm from './DetailChangeForm';
+import { Link } from 'react-router-dom';
 
 interface Props {
   gyeBoId: number;
@@ -50,9 +51,31 @@ export default function DetailInfo({ gyeBoId }: Props) {
 
   return (
     <div style={{ width: '1100px', marginLeft: '30px' }}>
-      <h3>
-        {detailInfo?.myName}({detailInfo?.myNamechi}) - {detailInfo?.mySae}世
-      </h3>
+      <div
+        style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+      >
+        <h3>
+          {detailInfo?.myName}({detailInfo?.myNamechi}) - {detailInfo?.mySae}世
+        </h3>
+        {detailInfo && (
+          <Link
+            to={`/eBook/${Math.floor((detailInfo.mySae - 1) / 5) + 1}/${
+              detailInfo._id
+            }`}
+          >
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: palette.orange,
+                ':hover': { bgcolor: 'orange' },
+                marginLeft: 5,
+              }}
+            >
+              족보 E-BOOK
+            </Button>
+          </Link>
+        )}
+      </div>
       {detailIsLoading ? (
         <Loading variant="loop" />
       ) : (
@@ -74,9 +97,9 @@ export default function DetailInfo({ gyeBoId }: Props) {
                 </ShowMoreText>
               </>
             ))}
-          {detailInfo && detailInfo.ect && (
+           {/* {detailInfo && detailInfo.ect && (
             <Button onClick={handleOpen}>수정</Button>
-          )}
+          )}  */}
         </>
       )}
       {detailInfo && detailInfo.ect && (
